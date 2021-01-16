@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- BOTON -->
+    <Style TargetType="{x:Type Button}"  x:Key="btnTess">
+        <Setter Property="FontFamily" Value="Oxygen" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Margin" Value="3" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate x:Name="tmpltButton" TargetType="Button">
+                    <Grid>
+                        <Border x:Name="BaseRectangle" 
+                                    Background="#ffffdc21" 
+                                    CornerRadius="4">
+                        </Border>
+                        <Border x:Name="GlassRectangle" 
+                                    Background="{StaticResource GlassFXbtn}" 
+                                    CornerRadius="4">
+                        </Border>
+                        <Border x:Name="GlowRectangle" 
+                                    Background="{StaticResource GlowFX}" 
+                                    CornerRadius="4" 
+                                    Opacity="0">
+                        </Border>
+                        <Border x:Name="ButtonBorder" 
+                                    CornerRadius="4" 
+                                    BorderBrush="#ffffdc21" 
+                                    Opacity="1"  
+                                    BorderThickness="1">
+                        </Border>
+                        <Viewbox>
+                            <ContentPresenter x:Name="ButtonContent" 
+                                              Margin="{Binding Path=Padding, RelativeSource={RelativeSource TemplatedParent}}"
+                                              Opacity=".8" 
+                                              Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" 
+                                              HorizontalAlignment="center" 
+                                              VerticalAlignment="center">
+                            </ContentPresenter>
+                        </Viewbox>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="OpacityMask" Value="#AA888888"/>
+                            <Setter Property="Margin" Value="2 1" />
+                            <Setter Property="Background" Value="#66FFDD33" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="ButtonContent" Value=".3"></Setter>
+                            <Setter Property="Opacity" TargetName="ButtonBorder" Value=".5"></Setter>
+                            <Setter Property="Background" TargetName="GlassRectangle" Value="{StaticResource GlassFXDisabled}"></Setter>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource btnTess}" x:Key="btnTessMarg">
+        <Setter Property="Margin" Value="14 8" />
+    </Style>
+
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource btnTess}" x:Key="btnTessCharge">
+        <Setter Property="Margin" Value="14 8" />
+        <Setter Property="Padding" Value="5" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource btnTess}" x:Key="btnTessMarg2">
+        <Setter Property="Margin" Value="20 10" />
+    </Style>
+
+</ResourceDictionary>

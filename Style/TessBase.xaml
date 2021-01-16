@@ -1,0 +1,63 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- CONTROL BACKGROUND -->
+    <SolidColorBrush x:Key="BaseColor" Color="#99000000"></SolidColorBrush>
+
+    <!-- GLASS EFFECT -->
+    <LinearGradientBrush x:Key="GlassFX" StartPoint=".5,0" EndPoint=".5,.5">
+        <GradientStop Offset="1" Color="#33336633"></GradientStop>
+        <GradientStop Offset="1" Color="#33000000"></GradientStop>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="GlassFXbtn" StartPoint=".5,0" EndPoint=".5,.5">
+        <GradientStop Offset="1" Color="#22996633"></GradientStop>
+        <GradientStop Offset="1" Color="#22000000"></GradientStop>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="GlassFXbtnDark" StartPoint=".5,0" EndPoint=".5,.5">
+        <GradientStop Offset="1" Color="#66996633"></GradientStop>
+        <GradientStop Offset="1" Color="#44000000"></GradientStop>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="GlassFXDisabled" StartPoint=".5,0" EndPoint=".5,.5">
+        <GradientStop Offset="1" Color="#66999999"></GradientStop>
+        <GradientStop Offset="1" Color="#55999999"></GradientStop>
+        <GradientStop Offset="0.6" Color="#44000000"></GradientStop>
+    </LinearGradientBrush>
+
+    <!-- GLOW EFFECT -->
+    <RadialGradientBrush x:Key="GlowFX" GradientOrigin=".5,1" Center=".5,1">
+        <GradientStop Offset="0" Color="#9900AAFF"></GradientStop>
+        <GradientStop Offset=".5" Color="#660099DD"></GradientStop>
+        <GradientStop Offset="1" Color="#33000000"></GradientStop>
+    </RadialGradientBrush>
+    <LinearGradientBrush x:Key="GlowFXProgress">
+        <GradientStop Offset="0" Color="#6600FF00"></GradientStop>
+        <GradientStop Offset=".70" Color="#9900AA22"></GradientStop>
+        <GradientStop Offset="1" Color="#bb00FF22"></GradientStop>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="GlowFXProgressAnimated" MappingMode="RelativeToBoundingBox">
+        <GradientStop Offset="0" Color="#00000000"></GradientStop>
+        <GradientStop Offset=".50" Color="#6600FF99"></GradientStop>
+        <GradientStop Offset="1" Color="#00000000"></GradientStop>
+    </LinearGradientBrush>
+
+    <!-- GLOW ANIMATION -->
+    <Storyboard x:Key="GlowOut">
+        <DoubleAnimation x:Name="AnimGlowOut" BeginTime="00:00:00" Storyboard.TargetName="GlowRectangle" Duration="00:00:00.250" From="1" To="0" Storyboard.TargetProperty="Opacity"></DoubleAnimation>
+    </Storyboard>
+    <Storyboard x:Key="GlowIn">
+        <DoubleAnimation x:Name="AnimGlow" BeginTime="00:00:00" Storyboard.TargetName="GlowRectangle" Duration="00:00:00.250" From="0" To="1" Storyboard.TargetProperty="Opacity">
+        </DoubleAnimation>
+    </Storyboard>
+
+    <RadialGradientBrush x:Key="GlowFXPressed" GradientOrigin=".5,1" Center=".5,1">
+        <GradientStop Offset="0" Color="#FFFF00CC"></GradientStop>
+        <GradientStop Offset="1.2" Color="#33FFFFFF"></GradientStop>
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="ToggleOn" GradientOrigin="0.5,0.5" Center="0.5,0.5">
+        <GradientStop Offset="0" Color="#FF00DD00"></GradientStop>
+        <GradientStop Offset="0.3" Color="#33FFFFFF"></GradientStop>
+    </RadialGradientBrush>
+
+</ResourceDictionary>

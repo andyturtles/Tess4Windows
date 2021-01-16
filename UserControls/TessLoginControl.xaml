@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Tess4Windows.UserControls.TessLoginControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <UserControl.Background>
+        <ImageBrush ImageSource="/Images/tess_win_bg.jpg" Stretch="UniformToFill"></ImageBrush>
+    </UserControl.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="28*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Name="lbl_user" Grid.Column="1" Grid.Row="1" Foreground="#EEE" Content="User" Style="{DynamicResource lblTess1}"></Label>
+        <Label Name="lbl_pw" Grid.Column="1" Grid.Row="2" Foreground="#EEE" Content="Pass" Style="{DynamicResource lblTess1}"></Label>
+
+        <TextBox Name="tbx_user" Grid.Column="2" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
+        <PasswordBox Name="tbx_pass" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Style="{DynamicResource pwdTessBase}" Margin="10"></PasswordBox>
+
+        <Button Name="btn_login" Grid.Column="2" Grid.Row="3" Content="Login" Click="btn_login_Click" Style="{DynamicResource btnTessCharge}"></Button>
+        <Button Name="btn_cancel" Grid.Column="1" Grid.Row="3" Content="Cancel" Click="btn_cancel_Click" Style="{DynamicResource btnTessCharge}"></Button>
+
+    </Grid>
+</UserControl>
