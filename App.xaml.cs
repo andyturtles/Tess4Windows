@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Windows;
 using aBasics;
 using aBasics.WpfBindingErrors;
@@ -14,6 +16,13 @@ namespace Tess4Windows {
         internal MainWindow myMainWindow { get { return (MainWindow)Application.Current.MainWindow; } }
 
         public App() {
+
+            string logsFolder   = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
+            Uri uri             = new Uri(logsFolder);
+            logsFolder          = uri.LocalPath;
+            logsFolder          = Path.Combine(logsFolder, "logs");
+
+            Log.SetLogFileDirectory(logsFolder);
             Log.SetLogFilename("Tess4Windows.txt");
             Log.SetLevel(Log.LEVEL.INFO);
             Log.Info("Tess4Windows - Start");
