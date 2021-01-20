@@ -17,7 +17,7 @@ namespace Tess4Windows.UserControls {
             TessApiResult res = await TessControlManager.Instance.TessApi.Login(tbx_user.Text, tbx_pass.Password);
 
             if ( res.Success ) {
-                TessControlManager.Instance.Settings.CarId = null; // Muss reseted werden, kann sich wohl ändern
+                if ( TessControlManager.Instance.Settings != null ) TessControlManager.Instance.Settings.CarId = null; // Muss reseted werden, kann sich wohl ändern
                 TessControlManager.Instance.ShowSuitableControl();
             }
             else {
