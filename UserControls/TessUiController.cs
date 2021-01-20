@@ -42,13 +42,14 @@ namespace Tess4Windows.UserControls {
                     return;
                 }
 
-                if ( !myTess.IsSleeping ) await myTess.GetCarInfo(LOAD_FROM_DISK);
+                if ( !myTess.IsSleeping ) res = await myTess.GetCarInfo(LOAD_FROM_DISK);
                 else {
                     Log.Info("Tess is sleeping, going to load last Info");
-                    await myTess.GetCarInfo(true);
+                    res = await myTess.GetCarInfo(true);
                 }
 
-                if ( setChargeLimitInput ) ChargeLimit = myTess.MyCarData?.charge_state?.charge_limit_soc ?? 0;
+                if ( !res.Success )  HandleError(res);
+                else if ( setChargeLimitInput ) ChargeLimit = myTess.MyCarData?.charge_state?.charge_limit_soc ?? 0;
             });
 
             NotifyPropertyChanged();

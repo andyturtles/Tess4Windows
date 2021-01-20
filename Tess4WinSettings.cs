@@ -6,8 +6,10 @@ namespace Tess4Windows {
 
         public long? CarId;
 
-        public string lat = "50.000000";
-        public string lon = "8.00000";
+        public string lat;
+        public string lon;
+
+        //public string test;
 
         public static Tess4WinSettings LoadSettings() {
             return TessTools.LoadResponse<Tess4WinSettings>(out _);
