@@ -1,0 +1,5 @@
+
+v1.1
+
+If you want to be extra safe and encrypt with your own password, you can enter the parameter '/ paranoid' when starting the program (in the link, for example):
+"Tess4Windows.exe / paranoid"
