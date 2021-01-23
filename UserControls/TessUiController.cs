@@ -96,6 +96,8 @@ namespace Tess4Windows.UserControls {
             await myTess.WakeUp();
         }
 
+#warning TODO: das hier schön machen, muss über den Manager laufen!!
+
         public ICommand RenewLoginCmd {
             get {
                 return new RelayCommand(p => {

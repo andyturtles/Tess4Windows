@@ -1,9 +1,9 @@
 ﻿<UserControl x:Class="Tess4Windows.UserControls.TessControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             mc:Ignorable="d" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1200">
     <UserControl.Background>
         <ImageBrush ImageSource="/Images/tess_win_bg.jpg" Stretch="UniformToFill"></ImageBrush>
@@ -13,23 +13,23 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="16*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="16*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="12*"/>
-            <ColumnDefinition Width="14*"/>
-            <ColumnDefinition Width="14*"/>
-            <ColumnDefinition Width="14*"/>
-            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="14*" />
+            <ColumnDefinition Width="14*" />
+            <ColumnDefinition Width="14*" />
+            <ColumnDefinition Width="12*" />
         </Grid.ColumnDefinitions>
 
         <!-- Fzg Status etc .. ++++++++++++++++++++++++++++++++++++++++++++-->
@@ -41,8 +41,8 @@
                     </Border.Effect>
                     <Border.Background>
                         <LinearGradientBrush EndPoint="0.504, 1.5" StartPoint="0.504,0.03">
-                            <GradientStop Color="#AA333333" Offset="0"/>
-                            <GradientStop Color="#AA000000" Offset="0.567"/>
+                            <GradientStop Color="#AA333333" Offset="0" />
+                            <GradientStop Color="#AA000000" Offset="0.567" />
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid>
@@ -60,7 +60,6 @@
 
                         <Label Name="lbl_sleepDataDate" Grid.Row="1" HorizontalAlignment="Center" Content="{Binding LastDataDate}" Foreground="Cyan" Style="{DynamicResource lblTess1}" Visibility="{Binding LastDataDateVisible}"></Label>
 
-
                         <Label Name="lbl_locked" Grid.Row="2" Content="{Binding LockedAndSentry}" HorizontalAlignment="Left" Foreground="{Binding ForegroundLables}" Style="{DynamicResource lblTess1}"></Label>
                         <Label Name="lbl_drive" Grid.Row="3" Content="{Binding Drive}" HorizontalAlignment="Left" Foreground="{Binding ForegroundLables}" Style="{DynamicResource lblTess1}"></Label>
                         <Label Name="lbl_temps" Grid.Row="4" Content="{Binding TempMeas}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding ForegroundLables}" Style="{DynamicResource lblTess1}"></Label>
@@ -75,8 +74,8 @@
         <!-- Wake, lock, etc. -->
         <Grid Grid.Column="1" Grid.Row="1" Margin="0" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -88,8 +87,8 @@
 
             <Grid Grid.Column="1" Grid.Row="0" Margin="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
 
                 <Button Name="btn_refresh"  Grid.Column="0" HorizontalAlignment="Left" Command="{Binding RefreshCmd}" Style="{DynamicResource btnTessMarg}" Padding="2 0">
@@ -109,7 +108,6 @@
                 </ToggleButton>
             </Grid>
 
-
             <!-- locked etc -->
 
             <Button Name="btn_lock" Grid.Row="1" Grid.Column="0" Command="{Binding LockDoorsCmd}" Style="{DynamicResource btnTessMarg}">
@@ -119,13 +117,11 @@
                 <Image Source="../Images/un_lock.png" Height="40" Width="40"></Image>
             </Button>
 
-
             <Button Name="btn_sentryAn" Grid.Row="2" Grid.Column="0" Content="Sentry on" Command="{Binding SetSentryOn}" Style="{DynamicResource btnTessMarg}" ></Button>
             <Button Name="btn_sentryAus" Grid.Row="2" Grid.Column="1" Content="Sentry off" Command="{Binding SetSentryOff}"  Style="{DynamicResource btnTessMarg}" ></Button>
         </Grid>
 
         <!-- Wake, lock, etc ++++++++++++++++++++++++++++++++++++++++++++-->
-        
 
         <!-- Heizung Status etc .. ++++++++++++++++++++++++++++++++++++++++++++-->
         <Grid Name="grd_clima_etc" Grid.Row="1" Grid.Column="4" Grid.RowSpan="3" Margin="0,0,0,10">
@@ -136,8 +132,8 @@
                     </Border.Effect>
                     <Border.Background>
                         <LinearGradientBrush EndPoint="0.504, 1.5" StartPoint="0.504,0.03">
-                            <GradientStop Color="#AA333333" Offset="0"/>
-                            <GradientStop Color="#AA000000" Offset="0.567"/>
+                            <GradientStop Color="#AA333333" Offset="0" />
+                            <GradientStop Color="#AA000000" Offset="0.567" />
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid>
@@ -163,14 +159,13 @@
 
         <!-- Heizung Status ENDE ++++++++++++++++++++++++++++++++++++++++++++-->
 
-
         <!--Klima Steuerung, Schieben ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
         <Grid Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -180,19 +175,17 @@
             <Button Name="btn_cloesWindow" Grid.Column="2" Grid.Row="0" Command="{Binding WindowCloseCmd}" Style="{DynamicResource btnTessMarg}">
                 <Image Source="../Images/WindowUp.png" Height="35" Width="35"></Image>
             </Button>
-            
+
             <Button Name="btn_ventWindow" Grid.Column="2" Grid.Row="1" Command="{Binding WindowVentCmd}" Style="{DynamicResource btnTessMarg}">
                 <Image Source="../Images/WindowDown.png" Height="35" Width="35"></Image>
             </Button>
-
-            
         </Grid>
 
         <Grid Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="3*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -206,7 +199,7 @@
             <Button Grid.Column="1" Grid.Row="0" Name="btn_defrost" Command="{Binding ToggleDefrostCmd}" Style="{DynamicResource btnTessMarg}">
                 <Grid>
                     <Image Source="../Images/defrost.png" Height="35" Width="35"></Image>
-                    <Line X1="2" Y1="2" X2="40" Y2="40" Stroke="Black" StrokeThickness="3" Visibility="{Binding DefrostOffVisible}"/>
+                    <Line X1="2" Y1="2" X2="40" Y2="40" Stroke="Black" StrokeThickness="3" Visibility="{Binding DefrostOffVisible}" />
                 </Grid>
             </Button>
 
@@ -234,8 +227,6 @@
 
         <!--ENDE Klima Steuerung ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-
-
         <!--Batterie und so ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
         <Grid Name="pnl_rangeAndBatt" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
@@ -245,16 +236,16 @@
             </Grid.RowDefinitions>
             <Grid VerticalAlignment="Center" Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
-                
+
                 <Label Name="lbl_BatRng" Grid.Column="0" Content="{Binding BatteryRange}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding ForegroundLables}" Style="{DynamicResource lblTess1}"></Label>
                 <Label Name="lbl_usableLevel" Grid.Column="1" Content="{Binding UsableBatteryLevel}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Aqua" Style="{DynamicResource lblTess1}"></Label>
                 <Label Name="lbl_EstBatRng" Grid.Column="2" Content="{Binding EstBatteryRange}" HorizontalAlignment="Center" Foreground="{Binding ForegroundLables}" Style="{DynamicResource lblTess1}"></Label>
             </Grid>
-            <ProgressBar Name="pgb_battLevel" Grid.Row="1" Margin="15,2,15,5" Minimum="0" Maximum="100" Value="{Binding BatteryLevel, Mode=OneWay}"/>
+            <ProgressBar Name="pgb_battLevel" Grid.Row="1" Margin="15,2,15,5" Minimum="0" Maximum="100" Value="{Binding BatteryLevel, Mode=OneWay}" />
         </Grid>
 
         <Grid Name="grd_chargeControll" Grid.Row="7" Grid.Column="1" Grid.RowSpan="2">
@@ -282,13 +273,12 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            
+
             <Slider Grid.Row="0" Grid.ColumnSpan="2" Margin="0 5 15 5" Minimum="50" Maximum="100" TickFrequency="5" IsSnapToTickEnabled="True" Height="30" Value="{Binding ChargeLimit}"></Slider>
 
             <TextBox Grid.Row="1" Grid.Column="0" Style="{DynamicResource tbxTessMarg}" Text="{Binding ChargeLimit}" FontSize="16"></TextBox>
             <Button Grid.Row="1" Grid.Column="1" Command="{Binding SetChargeLimit}" Style="{DynamicResource btnTess}" Content="Set Limit" Margin="5 5 15 5"></Button>
         </Grid>
-
 
         <Grid Name="grd_chargeVals1" Grid.Row="6" Grid.Column="3" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="10,10,0,0">
             <Border Background="#111" BorderBrush="DimGray" BorderThickness="2" ClipToBounds="True" CornerRadius="4">
@@ -298,8 +288,8 @@
                     </Border.Effect>
                     <Border.Background>
                         <LinearGradientBrush EndPoint="0.504, 1.5" StartPoint="0.504,0.03">
-                            <GradientStop Color="#AA333333" Offset="0"/>
-                            <GradientStop Color="#AA000000" Offset="0.567"/>
+                            <GradientStop Color="#AA333333" Offset="0" />
+                            <GradientStop Color="#AA000000" Offset="0.567" />
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid>
@@ -330,17 +320,15 @@
             </Border>
         </Grid>
 
-
         <!--Batterie ENDE ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
 
         <!-- Frunk, Licht + Hupe -->
 
         <Grid Grid.Column="0" Grid.Row="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"></RowDefinition>
@@ -352,16 +340,26 @@
             <Button Grid.Column="0" Grid.Row="0" Name="btn_trunk" Command="{Binding OpenRearTrunkCmd}" Style="{DynamicResource btnTessMarg}">
                 <Image Source="../Images/trunk.png" Height="50" Width="50"></Image>
             </Button>
+
+            <!--<Button Grid.Column="0" Grid.Row="2" Name="btn_test" Command="{Binding OpenRearTrunkCmd}" Padding="0" Style="{DynamicResource btnTessMarg}">
+                <Grid>
+                    <TextBlock Text="&#x2302;" RenderTransformOrigin=".5,.5"  Margin="0" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    </TextBlock>
+
+                    <TextBlock Text="&#x23DA;" RenderTransformOrigin=".5,.5"  Margin="0" FontSize="5" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock.RenderTransform>
+                        <RotateTransform  Angle="180" />
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+                </Grid>
+            </Button>-->
         </Grid>
 
-
-        
-        
         <Grid Grid.Column="4" Grid.Row="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="10*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"></RowDefinition>
@@ -381,10 +379,8 @@
                 <Image Source="../Images/horn.png" Height="40" Width="50"></Image>
             </Button>
         </Grid>
-        
-        <!-- Licht und Hupe ENDE -->
 
-        
+        <!-- Licht und Hupe ENDE -->
 
         <!--Login ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
@@ -396,8 +392,8 @@
                     </Border.Effect>
                     <Border.Background>
                         <LinearGradientBrush EndPoint="0.504, 1.5" StartPoint="0.504,0.03">
-                            <GradientStop Color="#AA333333" Offset="0"/>
-                            <GradientStop Color="#AA000000" Offset="0.567"/>
+                            <GradientStop Color="#AA333333" Offset="0" />
+                            <GradientStop Color="#AA000000" Offset="0.567" />
                         </LinearGradientBrush>
                     </Border.Background>
                     <Grid>
@@ -411,7 +407,6 @@
                         <Label Name="lbl_loginTil" Grid.Column="0" Grid.Row="1" Content="{Binding LoginTill}" Foreground="#999" HorizontalAlignment="Center" Style="{DynamicResource lblTess1}" Margin="1"></Label>
                         <Button Name="btn_newLogin" Grid.Column="0" Grid.Row="2" Content="(new) Login" HorizontalAlignment="Center" Command="{Binding RenewLoginCmd}" Style="{DynamicResource btnTess}"></Button>
                         <Button Name="btn_chooseCar" Grid.Column="0" Grid.Row="3" Content="Choose Car" HorizontalAlignment="Center" Command="{Binding ChooseCarCmd}" Style="{DynamicResource btnTess}"></Button>
-                        
                     </Grid>
                 </Border>
             </Border>
@@ -419,13 +414,12 @@
 
         <!--Login Ende ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-        
-        <!-- Spaeter  .. .. .. .. .. 
-        
+        <!-- Spaeter  .. .. .. .. ..
+
         <StackPanel Orientation="Horizontal" Grid.Column="0" HorizontalAlignment="Center">
             <Button Content="&#x2316;" Command="{Binding WhereIsTessCmd}" Style="{DynamicResource btnTess}"></Button>
         </StackPanel>
-        
+
         -->
     </Grid>
 </UserControl>

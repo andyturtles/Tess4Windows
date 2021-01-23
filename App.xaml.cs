@@ -13,10 +13,11 @@ namespace Tess4Windows {
     public partial class App : Application {
 
         internal static App myApp { get { return Application.Current as App; } }
+
+        [Obsolete]
         internal MainWindow myMainWindow { get { return (MainWindow)Application.Current.MainWindow; } }
 
         public App() {
-
             string logsFolder   = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
             Uri uri             = new Uri(logsFolder);
             logsFolder          = uri.LocalPath;
@@ -32,6 +33,14 @@ namespace Tess4Windows {
 
             TessControlManager tcm      = new TessControlManager();
             TessControlManager.Instance = tcm;
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e) {
+            bool pwMode = false;
+            if ( ( e.Args.Length > 0 ) && ( e.Args[0] == "/paranoid" ) ) pwMode = true;
+
+            MainWindow wnd = new MainWindow(pwMode);
+            wnd.Show();
         }
 
         #region UnhandledExceptions...
@@ -71,7 +80,7 @@ namespace Tess4Windows {
             return true;
         }
 
-        private void ExitWithThread() {
+        internal void ExitWithThread() {
             // The App does not terminate without running the exit in a separate thread.
             // A suggestion for the reason: The problem does only occur, if the UI thread runs exit. Shutdown the UI seems to be part of the exit routine.
             // So the UI thread could block itself by requesting itself to exit.

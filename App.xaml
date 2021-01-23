@@ -1,21 +1,20 @@
 ﻿<Application x:Class="Tess4Windows.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml">
+             Startup="Application_Startup">
     <Application.Resources>
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="style\Grid.xaml"/>
-                <ResourceDictionary Source="style\TessBase.xaml"/>
-                <ResourceDictionary Source="style\TessLabel.xaml"/>
-                <ResourceDictionary Source="style\TessProgressBar.xaml"/>
-                <ResourceDictionary Source="style\TessButton.xaml"/>
-                <ResourceDictionary Source="style\TessTextBox.xaml"/>
-                <ResourceDictionary Source="style\TessSlider.xaml"/>
-                <ResourceDictionary Source="style\TessToggleButton.xaml"/>
+                <ResourceDictionary Source="style\Grid.xaml" />
+                <ResourceDictionary Source="style\TessBase.xaml" />
+                <ResourceDictionary Source="style\TessLabel.xaml" />
+                <ResourceDictionary Source="style\TessProgressBar.xaml" />
+                <ResourceDictionary Source="style\TessButton.xaml" />
+                <ResourceDictionary Source="style\TessTextBox.xaml" />
+                <ResourceDictionary Source="style\TessSlider.xaml" />
+                <ResourceDictionary Source="style\TessToggleButton.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
     </Application.Resources>
 </Application>
