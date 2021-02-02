@@ -341,7 +341,7 @@
                 <Image Source="../Images/trunk.png" Height="50" Width="50"></Image>
             </Button>
 
-            <!--<Button Grid.Column="0" Grid.Row="2" Name="btn_test" Command="{Binding OpenRearTrunkCmd}" Padding="0" Style="{DynamicResource btnTessMarg}">
+            <Button Grid.Column="0" Grid.Row="2" Name="btn_homelink" Command="{Binding TriggerHomelinkCmd}" Visibility="{Binding HomelinkVisible}" Padding="0" Style="{DynamicResource btnTessMarg}">
                 <Grid>
                     <TextBlock Text="&#x2302;" RenderTransformOrigin=".5,.5"  Margin="0" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                     </TextBlock>
@@ -352,7 +352,7 @@
                     </TextBlock.RenderTransform>
                 </TextBlock>
                 </Grid>
-            </Button>-->
+            </Button>
         </Grid>
 
         <Grid Grid.Column="4" Grid.Row="5">
@@ -406,7 +406,7 @@
 
                         <Label Name="lbl_loginTil" Grid.Column="0" Grid.Row="1" Content="{Binding LoginTill}" Foreground="#999" HorizontalAlignment="Center" Style="{DynamicResource lblTess1}" Margin="1"></Label>
                         <Button Name="btn_newLogin" Grid.Column="0" Grid.Row="2" Content="(new) Login" HorizontalAlignment="Center" Command="{Binding RenewLoginCmd}" Style="{DynamicResource btnTess}"></Button>
-                        <Button Name="btn_chooseCar" Grid.Column="0" Grid.Row="3" Content="Choose Car" HorizontalAlignment="Center" Command="{Binding ChooseCarCmd}" Style="{DynamicResource btnTess}"></Button>
+                        <Button Name="btn_settings" Grid.Column="0" Grid.Row="3" Content="  Settings  " HorizontalAlignment="Center" Command="{Binding ShowSettingsCmd}" Style="{DynamicResource btnTess}"></Button>
                     </Grid>
                 </Border>
             </Border>

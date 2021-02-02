@@ -96,24 +96,12 @@ namespace Tess4Windows.UserControls {
             await myTess.WakeUp();
         }
 
-#warning TODO: das hier schön machen, muss über den Manager laufen!!
-
         public ICommand RenewLoginCmd {
-            get {
-                return new RelayCommand(p => {
-                    TessLoginControl tc = new TessLoginControl();
-                    App.myApp.myMainWindow.ucFunction.Content = tc;
-                });
-            }
+            get { return new RelayCommand(p => { TessControlManager.Instance.ShowLogin(); }); }
         }
 
-        public ICommand ChooseCarCmd {
-            get {
-                return new RelayCommand(p => {
-                    TessChooseControl tc = new TessChooseControl();
-                    App.myApp.myMainWindow.ucFunction.Content = tc;
-                });
-            }
+        public ICommand ShowSettingsCmd {
+            get { return new RelayCommand(p => { TessControlManager.Instance.ShowSettings(); }); }
         }
 
         #endregion Login / Wakeup
@@ -129,6 +117,15 @@ namespace Tess4Windows.UserControls {
                 else drv += "0";
                 drv += " kW";
                 return drv;
+            }
+        }
+
+        public Visibility HomelinkVisible { get { return TessControlManager.Instance.Settings.HasHomelinkCoordinates ? Visibility.Visible : Visibility.Hidden; } }
+
+        public ICommand TriggerHomelinkCmd {
+            get {
+                Tess4WinSettings set = TessControlManager.Instance.Settings;
+                return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.TriggerHomelink(set.latHomelink.Value, set.lonHomelink.Value)); }, p => ( !myTess.IsSleeping ));
             }
         }
 

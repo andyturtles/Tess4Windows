@@ -36,14 +36,8 @@ namespace Tess4Windows {
         /// <param name="toSet">To UserControl.</param>
         /// <param name="set">The set.</param>
         public void ShowSuitableControl() {
-            if ( !TessApi.IsLoggedIn ) {
-                TessLoginControl tc = new TessLoginControl();
-                UserControl.Content = tc;
-            }
-            else if ( Settings?.CarId == null ) {
-                TessChooseControl tc = new TessChooseControl();
-                UserControl.Content = tc;
-            }
+            if ( !TessApi.IsLoggedIn )          ShowLogin();
+            else if ( Settings?.CarId == null ) ShowSettings();
             else {
                 TessApi.SetCarId(Settings.CarId.Value);
                 TessControl tc = new TessControl();
@@ -51,10 +45,14 @@ namespace Tess4Windows {
             }
         }
 
-        internal void CarChoosen(long id) {
-            if ( Settings == null ) Settings    = new Tess4WinSettings();
-            Settings.CarId                      = id;
-            Settings.SaveSettings();
+        public void ShowLogin() {
+            TessLoginControl tc = new TessLoginControl();
+            UserControl.Content = tc;
+        }
+
+        public void ShowSettings() {
+            TessSettingsControl ts = new TessSettingsControl();
+            UserControl.Content = ts;
         }
     }
 }

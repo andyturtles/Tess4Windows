@@ -6,10 +6,15 @@ namespace Tess4Windows {
 
         public long? CarId;
 
-        public string lat;
-        public string lon;
+        public double? latWindows;
+        public double? lonWindows;
 
-        //public string test;
+        public double? latHomelink;
+        public double? lonHomelink;
+
+        public bool HasHomelinkCoordinates {
+            get { return ( latHomelink.HasValue && lonHomelink.HasValue ); }
+        }
 
         public static Tess4WinSettings LoadSettings() {
             return TessTools.LoadResponse<Tess4WinSettings>(out _);

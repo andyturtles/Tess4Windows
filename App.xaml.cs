@@ -14,9 +14,6 @@ namespace Tess4Windows {
 
         internal static App myApp { get { return Application.Current as App; } }
 
-        [Obsolete]
-        internal MainWindow myMainWindow { get { return (MainWindow)Application.Current.MainWindow; } }
-
         public App() {
             string logsFolder   = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
             Uri uri             = new Uri(logsFolder);

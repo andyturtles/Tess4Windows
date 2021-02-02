@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Tess4Windows.UserControls.TessSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <UserControl.Background>
+        <SolidColorBrush Color="#111"></SolidColorBrush>
+    </UserControl.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="18*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Name="lbl_choose" Grid.Column="0" Grid.Row="1" Foreground="#EEE" Content="Choose Car" VerticalAlignment="Top" Style="{DynamicResource lblTess1}"></Label>
+
+        <DataGrid Name="dgProds" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,10" ItemsSource="{Binding ObservProductList, Mode=OneWay}"
+                          AutoGenerateColumns="False" RowHeaderWidth="0" ColumnWidth="Auto" CanUserAddRows="False" Background="#222" Foreground="#666">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Display Name" Binding="{Binding display_name}" IsReadOnly="True" />
+                <DataGridTextColumn Header="Color" Binding="{Binding color}" IsReadOnly="True" />
+                <DataGridTextColumn Header="VIN" Binding="{Binding vin}" IsReadOnly="True" />
+
+                <DataGridTextColumn Header="Id" Binding="{Binding id}" IsReadOnly="True" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Name="lbl_HL_lat" Grid.Column="0" Grid.Row="4" Foreground="#EEE" Content="Homelink Latitude"  Style="{DynamicResource lblTess1}"></Label>
+        <TextBox Name="tbx_HL_lat" Grid.Column="1" Grid.Row="4" Text="{Binding LatHomelink}" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
+        <Button Name="btn_getCurrentPosForHL" Grid.Column="2" Grid.Row="4" Content="Get Current Position" Click="btn_getCurrentPosForHL_Click" Style="{DynamicResource btnTessCharge}"></Button>
+
+        <Label Name="lbl_HL_lon" Grid.Column="0" Grid.Row="5" Foreground="#EEE" Content="Homelink Longitude" Style="{DynamicResource lblTess1}"></Label>
+        <TextBox Name="tbx_HL_lon" Grid.Column="1" Grid.Row="5" Text="{Binding LonHomelink}" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
+
+        <Button Name="btn_cancel" Grid.Column="4" Grid.Row="6" Content="Cancel" Click="btn_cancel_Click" Style="{DynamicResource btnTessCharge}"></Button>
+        <Button Name="btn_ok" Grid.Column="5" Grid.Row="6" Content="OK" Click="btn_ok_Click" Style="{DynamicResource btnTessCharge}"></Button>
+    </Grid>
+</UserControl>
