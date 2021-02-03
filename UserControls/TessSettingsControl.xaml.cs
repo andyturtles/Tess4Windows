@@ -1,13 +1,15 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using TessApi;
 using TessApi.JsonData;
 
 namespace Tess4Windows.UserControls {
 
     /// <summary>
-    /// Interaktionslogik für TessChooseControl.xaml
+    /// Interaktionslogik für TessSettingsControl.xaml
     /// </summary>
     public partial class TessSettingsControl : UserControl {
 
@@ -15,6 +17,8 @@ namespace Tess4Windows.UserControls {
 
         internal TessSettingsControl() {
             InitializeComponent();
+            this.dgProds.DataContextChanged += DgProds_DataContextChanged;
+            this.dgProds.SelectionChanged += DgProds_SelectionChanged;
 
             if ( TessControlManager.Instance.Settings == null ) TessControlManager.Instance.Settings = new Tess4WinSettings();
             cuic                = new SettingsUiController(TessControlManager.Instance.Settings);
@@ -27,7 +31,22 @@ namespace Tess4Windows.UserControls {
                 else                cuic.NotifyPropertyChanged();
             });
 
-            if ( TessControlManager.Instance.TessApi.IsSleeping ) btn_getCurrentPosForHL.IsEnabled = false;
+            if ( ( TessControlManager.Instance.TessApi.MyCar == null ) || TessControlManager.Instance.TessApi.IsSleeping ) {
+                btn_getCurrentPosForHL.IsEnabled = false;
+                btn_getCurrentPosForWin.IsEnabled = false;
+            }
+        }
+
+        private void DgProds_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            SetSelectedItem();
+        }
+
+        private void DgProds_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e) {
+            Dispatcher.BeginInvoke(DispatcherPriority.Render, new Action(() => SetSelectedItem()));
+        }
+
+        private void SetSelectedItem() {
+            if ( dgProds.Items.Count == 1 ) dgProds.SelectedItem = dgProds.Items[0];
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e) {
@@ -43,11 +62,10 @@ namespace Tess4Windows.UserControls {
             Product p       = (Product)dgProds.SelectedItem;
             cuic.SaveSettings(p.id);
 
-            //TessControlManager.Instance.CarChoosen(p.id);
             TessControlManager.Instance.ShowSuitableControl();
         }
 
-        private async void btn_getCurrentPosForHL_Click(object sender, RoutedEventArgs e) {
+        private async Task RefreshCarData() {
             if ( TessControlManager.Instance.TessApi.MyCarData == null ) {
                 TessApiResult res = await TessControlManager.Instance.TessApi.GetCarInfo(false);
                 if ( !res.Success ) {
@@ -55,10 +73,27 @@ namespace Tess4Windows.UserControls {
                     return;
                 }
             }
+        }
+
+        private async void btn_getCurrentPosForHL_Click(object sender, RoutedEventArgs e) {
+            await RefreshCarData();
 
             TessControlManager.Instance.Settings.latHomelink = TessControlManager.Instance.TessApi.MyCarData?.drive_state?.latitude;
             TessControlManager.Instance.Settings.lonHomelink = TessControlManager.Instance.TessApi.MyCarData?.drive_state?.longitude;
             cuic.NotifyPropertyChanged();
+        }
+
+        private async void btn_getCurrentPosForWin_Click(object sender, RoutedEventArgs e) {
+            await RefreshCarData();
+
+            TessControlManager.Instance.Settings.latWindows = TessControlManager.Instance.TessApi.MyCarData?.drive_state?.latitude;
+            TessControlManager.Instance.Settings.lonWindows = TessControlManager.Instance.TessApi.MyCarData?.drive_state?.longitude;
+            cuic.NotifyPropertyChanged();
+        }
+
+        private void btn_showToken_Click(object sender, RoutedEventArgs e) {
+            TessShowTokenControl tst = new TessShowTokenControl();
+            TessControlManager.Instance.ShowControl(tst);
         }
     }
 }

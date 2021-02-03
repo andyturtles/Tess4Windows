@@ -25,6 +25,7 @@ namespace Tess4Windows.UserControls {
         private const bool LOAD_FROM_DISK = false; // Debug / testing without bothering Tesla
 
         private MyTess myTess { get { return TessControlManager.Instance.TessApi; } }
+        private Tess4WinSettings settings { get { return TessControlManager.Instance.Settings; } }
 
         public TessUiController() {
             if ( myTess.IsLoggedIn ) RefreshData(true);
@@ -123,10 +124,7 @@ namespace Tess4Windows.UserControls {
         public Visibility HomelinkVisible { get { return TessControlManager.Instance.Settings.HasHomelinkCoordinates ? Visibility.Visible : Visibility.Hidden; } }
 
         public ICommand TriggerHomelinkCmd {
-            get {
-                Tess4WinSettings set = TessControlManager.Instance.Settings;
-                return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.TriggerHomelink(set.latHomelink.Value, set.lonHomelink.Value)); }, p => ( !myTess.IsSleeping ));
-            }
+            get { return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.TriggerHomelink(settings.latHomelink.Value, settings.lonHomelink.Value)); }, p => ( !myTess.IsSleeping )); }
         }
 
         public ICommand WhereIsTessCmd {
@@ -241,11 +239,11 @@ namespace Tess4Windows.UserControls {
         }
 
         public ICommand WindowVentCmd {
-            get { return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.VentWindows()); }, p => ( !myTess.IsSleeping )); }
+            get {return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.VentWindows(settings.latWindows.Value, settings.lonWindows.Value)); }, p => ( !myTess.IsSleeping ));}
         }
 
         public ICommand WindowCloseCmd {
-            get { return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.CloseWindows()); }, p => ( !myTess.IsSleeping)); }
+            get { return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.CloseWindows(settings.latWindows.Value, settings.lonWindows.Value)); }, p => ( !myTess.IsSleeping)); }
         }
 
         #endregion Temp, A/C ...

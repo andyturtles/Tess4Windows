@@ -65,6 +65,9 @@
     <Compile Include="UserControls\TessControl.xaml.cs">
       <DependentUpon>TessControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TessShowTokenControl.xaml.cs">
+      <DependentUpon>TessShowTokenControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TessSettingsControl.xaml.cs">
       <DependentUpon>TessSettingsControl.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\TessControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TessShowTokenControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

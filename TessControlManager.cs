@@ -41,18 +41,22 @@ namespace Tess4Windows {
             else {
                 TessApi.SetCarId(Settings.CarId.Value);
                 TessControl tc = new TessControl();
-                UserControl.Content = tc;
+                ShowControl(tc);
             }
         }
 
         public void ShowLogin() {
-            TessLoginControl tc = new TessLoginControl();
-            UserControl.Content = tc;
+            TessLoginControl tlc = new TessLoginControl();
+            ShowControl(tlc);
         }
 
         public void ShowSettings() {
-            TessSettingsControl ts = new TessSettingsControl();
-            UserControl.Content = ts;
+            TessSettingsControl tsc = new TessSettingsControl();
+            ShowControl(tsc);
+        }
+
+        public void ShowControl(UserControl ctl) {
+            UserControl.Content = ctl;
         }
     }
 }

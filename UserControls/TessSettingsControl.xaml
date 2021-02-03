@@ -12,23 +12,28 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
-            <RowDefinition Height="6*" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
-            <RowDefinition Height="18*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*" />
-            <ColumnDefinition Width="12*" />
-            <ColumnDefinition Width="12*" />
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="6*" />
             <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="6*" />
             <ColumnDefinition Width="6*" />
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
+
+        <Button Name="btn_showToken" Grid.Column="5" Grid.Row="1" Content="Show Token" Click="btn_showToken_Click" Style="{DynamicResource btnTessCharge}"></Button>
 
         <Label Name="lbl_choose" Grid.Column="0" Grid.Row="1" Foreground="#EEE" Content="Choose Car" VerticalAlignment="Top" Style="{DynamicResource lblTess1}"></Label>
 
@@ -50,6 +55,13 @@
 
         <Label Name="lbl_HL_lon" Grid.Column="0" Grid.Row="5" Foreground="#EEE" Content="Homelink Longitude" Style="{DynamicResource lblTess1}"></Label>
         <TextBox Name="tbx_HL_lon" Grid.Column="1" Grid.Row="5" Text="{Binding LonHomelink}" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
+
+        <Label Name="lbl_Win_lat" Grid.Column="0" Grid.Row="6" Foreground="#EEE" Content="Windows Latitude"  Style="{DynamicResource lblTess1}"></Label>
+        <TextBox Name="tbx_Win_lat" Grid.Column="1" Grid.Row="6" Text="{Binding LatWindows}" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
+        <Button Name="btn_getCurrentPosForWin" Grid.Column="2" Grid.Row="6" Content="Get Current Position" Click="btn_getCurrentPosForWin_Click" Style="{DynamicResource btnTessCharge}"></Button>
+
+        <Label Name="lbl_Win_lon" Grid.Column="0" Grid.Row="7" Foreground="#EEE" Content="Windows Longitude" Style="{DynamicResource lblTess1}"></Label>
+        <TextBox Name="tbx_Win_lon" Grid.Column="1" Grid.Row="7" Text="{Binding LonWindows}" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
 
         <Button Name="btn_cancel" Grid.Column="4" Grid.Row="6" Content="Cancel" Click="btn_cancel_Click" Style="{DynamicResource btnTessCharge}"></Button>
         <Button Name="btn_ok" Grid.Column="5" Grid.Row="6" Content="OK" Click="btn_ok_Click" Style="{DynamicResource btnTessCharge}"></Button>

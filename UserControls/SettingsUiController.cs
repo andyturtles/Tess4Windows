@@ -36,6 +36,22 @@ namespace Tess4Windows.UserControls {
             }
         }
 
+        public string LatWindows {
+            get { return settings.latWindows.ToString(); }
+            set {
+                if ( String.IsNullOrEmpty(value) )  settings.latWindows = null;
+                else                                settings.latWindows = Double.Parse(value);
+            }
+        }
+
+        public string LonWindows {
+            get { return settings.lonWindows.ToString(); }
+            set {
+                if ( String.IsNullOrEmpty(value) )  settings.lonWindows = null;
+                else                                settings.lonWindows = Double.Parse(value);
+            }
+        }
+
         public SettingsUiController(Tess4WinSettings set) {
             settings = set;
         }
