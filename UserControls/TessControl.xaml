@@ -405,7 +405,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Name="lbl_loginTil" Grid.Column="0" Grid.Row="1" Content="{Binding LoginTill}" Foreground="#999" HorizontalAlignment="Center" Style="{DynamicResource lblTess1}" Margin="1"></Label>
-                        <Button Name="btn_newLogin" Grid.Column="0" Grid.Row="2" Content="(new) Login" HorizontalAlignment="Center" Command="{Binding RenewLoginCmd}" Style="{DynamicResource btnTess}"></Button>
+                        <Button Name="btn_newLogin" Grid.Column="0" Grid.Row="2" Content="New Login" HorizontalAlignment="Center" Command="{Binding RenewLoginCmd}" Style="{DynamicResource btnTess}"></Button>
                         <Button Name="btn_settings" Grid.Column="0" Grid.Row="3" Content="  Settings  " HorizontalAlignment="Center" Command="{Binding ShowSettingsCmd}" Style="{DynamicResource btnTess}"></Button>
                     </Grid>
                 </Border>

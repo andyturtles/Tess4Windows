@@ -46,6 +46,7 @@ namespace Tess4Windows {
         }
 
         public void ShowLogin() {
+#warning TODO: bestehendes Login löschen !?
             TessLoginControl tlc = new TessLoginControl();
             ShowControl(tlc);
         }

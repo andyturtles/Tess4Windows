@@ -25,11 +25,25 @@ namespace Tess4Windows {
             Log.SetLevel(Log.LEVEL.INFO);
             Log.Info("Tess4Windows - Start");
 
+            DeleteOldLogs(logsFolder);
+
             this.DispatcherUnhandledException += HandleUnhandledExceptions;
             BindingExceptionThrower.Attach();
 
             TessControlManager tcm      = new TessControlManager();
             TessControlManager.Instance = tcm;
+        }
+
+        private void DeleteOldLogs(string logsFolder) {
+            try {
+                DirectoryInfo di = new DirectoryInfo(logsFolder);
+                foreach ( FileInfo fi in di.GetFiles() ) {
+                    if ( ( DateTime.Now - fi.LastWriteTime ).TotalDays > 14 ) fi.Delete();
+                }
+            }
+            catch ( Exception ex) {
+                Log.Error("DeleteOldLogs", ex);
+            }
         }
 
         private void Application_Startup(object sender, StartupEventArgs e) {

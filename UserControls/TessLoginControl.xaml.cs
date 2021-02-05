@@ -14,11 +14,21 @@ namespace Tess4Windows.UserControls {
         }
 
         private async void btn_login_Click(object sender, RoutedEventArgs e) {
-            TessApiResult res = await TessControlManager.Instance.TessApi.Login(tbx_user.Text, tbx_pass.Password);
-
+            TessApiLoginResult res = await TessControlManager.Instance.TessApi.Login(tbx_user.Text, tbx_pass.Password);
             if ( res.Success ) {
-                if ( TessControlManager.Instance.Settings != null ) TessControlManager.Instance.Settings.CarId = null; // Muss reseted werden, kann sich wohl ändern
-                TessControlManager.Instance.ShowSuitableControl();
+                if ( res.MfaNeeded ) {
+                    lbl_mfa.Visibility = Visibility.Visible;
+                    tbx_mfaCode.Visibility = Visibility.Visible;
+                    btn_mfaLogin.Visibility = Visibility.Visible;
+
+                    btn_login.IsEnabled = false;
+                    tbx_user.IsEnabled = false;
+                    tbx_pass.IsEnabled = false;
+                }
+                else {
+                    if ( TessControlManager.Instance.Settings != null ) TessControlManager.Instance.Settings.CarId = null; // Muss reseted werden, kann sich wohl ändern
+                    TessControlManager.Instance.ShowSuitableControl();
+                }
             }
             else {
                 TessControlManager.Instance.ShowError("Login failed: " + res.Message);
@@ -27,6 +37,19 @@ namespace Tess4Windows.UserControls {
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e) {
             TessControlManager.Instance.ShowSuitableControl();
+        }
+
+        private async void btn_mfaLogin_Click(object sender, RoutedEventArgs e) {
+            string code = tbx_mfaCode.Text;
+
+            TessApiLoginResult res = await TessControlManager.Instance.TessApi.ContiueMfaLogin(tbx_mfaCode.Text);
+            if ( res.Success ) {
+                if ( TessControlManager.Instance.Settings != null ) TessControlManager.Instance.Settings.CarId = null; // Muss reseted werden, kann sich wohl ändern
+                TessControlManager.Instance.ShowSuitableControl();
+            }
+            else {
+                TessControlManager.Instance.ShowError("Login failed: " + res.Message);
+            }
         }
     }
 }

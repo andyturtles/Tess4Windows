@@ -16,7 +16,7 @@ namespace Tess4Windows.UserControls {
         }
 
         private void btn_ok_Click(object sender, RoutedEventArgs e) {
-            TessControlManager.Instance.ShowSuitableControl();
+            TessControlManager.Instance.ShowSettings();
         }
     }
 }
