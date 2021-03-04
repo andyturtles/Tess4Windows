@@ -1,34 +1,21 @@
 ﻿<Window x:Class="Tess4Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Tess 4 Windows" Width="1024" Height="640" MinWidth="800" MinHeight="480" Icon="tess_icon.ico">
+        Title="Tess 4 Windows - v 1.5" Width="1024" Height="640" MinWidth="800" MinHeight="480" Icon="tess_icon.ico">
     <Window.Background>
         <SolidColorBrush Color="#111"></SolidColorBrush>
-        <!--<ImageBrush ImageSource="/Images/tess_win_bg.jpg" Stretch="UniformToFill"></ImageBrush>-->
     </Window.Background>
-    <!--<Window.Resources>
-        <uc:MenuControl x:Key="uc_menu"/>
-    </Window.Resources>-->
 
-    <!--<UserControl Grid.Column="3" Name="ucFunction"></UserControl>-->
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="200*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="200*" />
+                <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
 
-
-            <!--<UserControl Grid.Column="1" Name="ucMenu" Content="{Binding Source={StaticResource uc_menu}}"></UserControl>-->
-            
             <UserControl Grid.Column="1" Name="ucFunction"></UserControl>
-
-            <!--<Label Grid.Column="3">ABC</Label>
-            <Label Grid.Column="4">ABC</Label>-->
-
         </Grid>
-
 </Window>

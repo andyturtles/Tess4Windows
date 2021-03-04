@@ -42,7 +42,7 @@ namespace Tess4Windows.UserControls {
         private async void btn_mfaLogin_Click(object sender, RoutedEventArgs e) {
             string code = tbx_mfaCode.Text;
 
-            TessApiLoginResult res = await TessControlManager.Instance.TessApi.ContiueMfaLogin(tbx_mfaCode.Text);
+            TessApiLoginResult res = await TessControlManager.Instance.TessApi.ContinueMfaLogin(tbx_mfaCode.Text);
             if ( res.Success ) {
                 if ( TessControlManager.Instance.Settings != null ) TessControlManager.Instance.Settings.CarId = null; // Muss reseted werden, kann sich wohl ändern
                 TessControlManager.Instance.ShowSuitableControl();
