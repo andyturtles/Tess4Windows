@@ -239,11 +239,11 @@ namespace Tess4Windows.UserControls {
         }
 
         public ICommand WindowVentCmd {
-            get {return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.VentWindows(settings.latWindows.Value, settings.lonWindows.Value)); }, p => ( !myTess.IsSleeping ));}
+            get { return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.VentWindows(settings.latWindows.Value, settings.lonWindows.Value)); }, p => ( !myTess.IsSleeping && settings.latWindows.HasValue && settings.lonWindows.HasValue )); }
         }
 
         public ICommand WindowCloseCmd {
-            get { return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.CloseWindows(settings.latWindows.Value, settings.lonWindows.Value)); }, p => ( !myTess.IsSleeping)); }
+            get { return new RelayCommand(async p => { HandleResultAndRefresh(await myTess.CloseWindows(settings.latWindows.Value, settings.lonWindows.Value)); }, p => ( !myTess.IsSleeping && settings.latWindows.HasValue && settings.lonWindows.HasValue )); }
         }
 
         #endregion Temp, A/C ...
@@ -286,7 +286,7 @@ namespace Tess4Windows.UserControls {
         }
 
         public ICommand SetSentryOn {
-            get { return new RelayCommand(async p => { if ( !AreUSure("Wächtermodus aktivieren?") ) return; HandleResultAndRefresh(await myTess.SetSentryMode(true)); }, p => ( !myTess.IsSleeping && ( myTess.MyCarData?.vehicle_state?.sentry_mode ?? false ) )); }
+            get { return new RelayCommand(async p => { if ( !AreUSure("Wächtermodus aktivieren?") ) return; HandleResultAndRefresh(await myTess.SetSentryMode(true)); }, p => ( !myTess.IsSleeping && !( myTess.MyCarData?.vehicle_state?.sentry_mode ?? false ) )); }
         }
 
         public ICommand SetSentryOff {
