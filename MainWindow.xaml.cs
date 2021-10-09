@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using aBasics;
 using Tess4Windows.UserControls;
 
 namespace Tess4Windows {
@@ -12,6 +14,13 @@ namespace Tess4Windows {
             InitializeComponent();
 
             TessControlManager.Instance.Init(this.ucFunction, App.myApp.ShowError);
+
+            try {
+                App.myApp.LoadStyleDictionaryFromFile();
+            }
+            catch ( Exception ex ) {
+                Log.Error("MainWindow.LoadStyleDictionaryFromFile", ex);
+            }
 
             if ( pwMode ) {
                 TessPasswordControl tc = new TessPasswordControl();

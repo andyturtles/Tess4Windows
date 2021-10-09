@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1200">
     <UserControl.Background>
-        <ImageBrush ImageSource="/Images/tess_win_bg.jpg" Stretch="UniformToFill"></ImageBrush>
+        <!--<ImageBrush ImageSource="/Images/tess_win_bg.jpg" Stretch="UniformToFill"></ImageBrush>-->
+        <ImageBrush ImageSource="{Binding img}" Stretch="UniformToFill"></ImageBrush>
     </UserControl.Background>
 
     <!-- WPF /Margins Order     Left, Top, Right, Bottom  , which Idiot decided this should be not like css, I always mix this up :( -->

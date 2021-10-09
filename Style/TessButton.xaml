@@ -13,31 +13,31 @@
             <Setter.Value>
                 <ControlTemplate x:Name="tmpltButton" TargetType="Button">
                     <Grid>
-                        <Border x:Name="BaseRectangle" 
-                                    Background="#ffffdc21" 
+                        <Border x:Name="BaseRectangle"
+                                    Background="{StaticResource ButtonColor}"
                                     CornerRadius="4">
                         </Border>
-                        <Border x:Name="GlassRectangle" 
-                                    Background="{StaticResource GlassFXbtn}" 
+                        <Border x:Name="GlassRectangle"
+                                    Background="{StaticResource GlassFXbtn}"
                                     CornerRadius="4">
                         </Border>
-                        <Border x:Name="GlowRectangle" 
-                                    Background="{StaticResource GlowFX}" 
-                                    CornerRadius="4" 
+                        <Border x:Name="GlowRectangle"
+                                    Background="{StaticResource GlowFX}"
+                                    CornerRadius="4"
                                     Opacity="0">
                         </Border>
-                        <Border x:Name="ButtonBorder" 
-                                    CornerRadius="4" 
-                                    BorderBrush="#ffffdc21" 
-                                    Opacity="1"  
+                        <Border x:Name="ButtonBorder"
+                                    CornerRadius="4"
+                                    BorderBrush="{StaticResource ButtonColor}"
+                                    Opacity="1"
                                     BorderThickness="1">
                         </Border>
                         <Viewbox>
-                            <ContentPresenter x:Name="ButtonContent" 
+                            <ContentPresenter x:Name="ButtonContent"
                                               Margin="{Binding Path=Padding, RelativeSource={RelativeSource TemplatedParent}}"
-                                              Opacity=".8" 
-                                              Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" 
-                                              HorizontalAlignment="center" 
+                                              Opacity=".8"
+                                              Content="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"
+                                              HorizontalAlignment="center"
                                               VerticalAlignment="center">
                             </ContentPresenter>
                         </Viewbox>
@@ -45,7 +45,7 @@
                     <ControlTemplate.Triggers>
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="OpacityMask" Value="#AA888888"/>
+                            <Setter Property="OpacityMask" Value="#AA888888" />
                             <Setter Property="Margin" Value="2 1" />
                             <Setter Property="Background" Value="#66FFDD33" />
                         </Trigger>
@@ -55,7 +55,6 @@
                             <Setter Property="Opacity" TargetName="ButtonBorder" Value=".5"></Setter>
                             <Setter Property="Background" TargetName="GlassRectangle" Value="{StaticResource GlassFXDisabled}"></Setter>
                         </Trigger>
-
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
@@ -75,5 +74,4 @@
     <Style TargetType="{x:Type Button}" BasedOn="{StaticResource btnTess}" x:Key="btnTessMarg2">
         <Setter Property="Margin" Value="20 10" />
     </Style>
-
 </ResourceDictionary>

@@ -1,0 +1,9 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Original #ffffdc21 -->
+    <Color x:Key="SliderColor">#ffffdc21</Color>
+    <SolidColorBrush x:Key="HorizontalSliderTrackNormalBackground" Color="#ffffdc21" />
+    <SolidColorBrush x:Key="ButtonColor" Color="#ffffdc21"></SolidColorBrush>
+    <SolidColorBrush x:Key="TbxColor" Color="#ffffdc21"></SolidColorBrush>
+</ResourceDictionary>

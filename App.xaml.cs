@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Markup;
+using System.Windows.Media;
 using aBasics;
 using aBasics.WpfBindingErrors;
 
@@ -13,6 +16,8 @@ namespace Tess4Windows {
     public partial class App : Application {
 
         internal static App myApp { get { return Application.Current as App; } }
+
+        internal ImageSource tessBackground;
 
         public App() {
             string logsFolder   = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
@@ -29,6 +34,13 @@ namespace Tess4Windows {
 
             this.DispatcherUnhandledException += HandleUnhandledExceptions;
             BindingExceptionThrower.Attach();
+
+            try {
+                tessBackground = aBasics.WpfBasics.Images.ImageSourceFromFile("Images\\tess_win_bg.jpg");
+            }
+            catch ( Exception ex ) {
+                Log.Error("Load tessBackground", ex);
+            }
 
             TessControlManager tcm      = new TessControlManager();
             TessControlManager.Instance = tcm;
@@ -52,6 +64,24 @@ namespace Tess4Windows {
 
             MainWindow wnd = new MainWindow(pwMode);
             wnd.Show();
+        }
+
+        public void LoadStyleDictionaryFromFile() {
+            string styleFile = "Style\\TessColors.xaml";
+                try {
+                    using ( var fs = new FileStream(styleFile, FileMode.Open, FileAccess.Read, FileShare.Read) ) {
+                        var dic = (ResourceDictionary)XamlReader.Load(fs);
+
+                        ResourceDictionary rd = Resources.MergedDictionaries.Where(x => x.Source.OriginalString == "style\\TessColors.xaml").SingleOrDefault();
+                        if ( rd == null ) return;
+
+                        Resources.MergedDictionaries.Remove(rd);
+                        Resources.MergedDictionaries.Add(dic);
+                    }
+                }
+                catch ( Exception ex ) {
+                    Log.Warning("LoadStyleDictionaryFromFile", ex);
+                }
         }
 
         #region UnhandledExceptions...

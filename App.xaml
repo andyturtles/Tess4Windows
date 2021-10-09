@@ -7,6 +7,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="style\Grid.xaml" />
+                <ResourceDictionary Source="style\TessColors.xaml" />
                 <ResourceDictionary Source="style\TessBase.xaml" />
                 <ResourceDictionary Source="style\TessLabel.xaml" />
                 <ResourceDictionary Source="style\TessProgressBar.xaml" />

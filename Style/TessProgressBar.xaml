@@ -19,10 +19,9 @@
                         <Border x:Name="BordeCabeceraSombra" BorderThickness="2" BorderBrush="DarkGray" CornerRadius="{StaticResource theRad}" Opacity=".2" Margin="1,1,1,0"></Border>
 
                         <Viewbox StretchDirection="Both">
-                            <Label x:Name="Progress" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                            <Label x:Name="Progress" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                                FontWeight="Bold" Foreground="White" Opacity=".7" Content="{Binding Path=Value, RelativeSource={RelativeSource TemplatedParent}}" Margin="0" Padding="0"></Label>
                         </Viewbox>
-
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsIndeterminate" Value="True">
@@ -30,9 +29,9 @@
                             <Setter Property="Background" TargetName="PART_Indicator">
                                 <Setter.Value>
                                     <MultiBinding>
-                                        <Binding Source="{StaticResource GlowFXProgressAnimated}"/>
-                                        <Binding Path="ActualWidth"  ElementName="BaseRectangle"/>
-                                        <Binding Path="ActualHeight" ElementName="BaseRectangle"/>
+                                        <Binding Source="{StaticResource GlowFXProgressAnimated}" />
+                                        <Binding Path="ActualWidth"  ElementName="BaseRectangle" />
+                                        <Binding Path="ActualHeight" ElementName="BaseRectangle" />
                                     </MultiBinding>
                                 </Setter.Value>
                             </Setter>
@@ -45,5 +44,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
 </ResourceDictionary>

@@ -101,6 +101,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Style\TessColors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
     <Page Include="Style\TessButton.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -195,7 +200,9 @@
     <Resource Include="Images\seatHeat.png" />
     <Resource Include="Images\seatHeat_L.png" />
     <Resource Include="Images\SeatHeat_R.png" />
-    <Resource Include="Images\tess_win_bg.jpg" />
+    <None Include="Images\tess_win_bg.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Resource Include="Images\trunk.png" />
     <Resource Include="Images\un_lock.png" />
     <Resource Include="Images\WindowDown.png" />
@@ -205,6 +212,9 @@
     <Resource Include="tess_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy D:\PDOXWIN\A-Tools\Tess4Windows\Style\TessColors.xaml $(TargetDir)Style\ /Y</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

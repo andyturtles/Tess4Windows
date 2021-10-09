@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using aBasics.WpfBasics;
 using TessApi;
 
 namespace Tess4Windows.UserControls {
@@ -9,8 +11,19 @@ namespace Tess4Windows.UserControls {
     /// </summary>
     public partial class TessLoginControl : UserControl {
 
+        private class TessLoginUiController : UIController {
+            public ImageSource img { get { return App.myApp.tessBackground; } }
+
+            public override void NotifyPropertyChanged() {
+                NotifyPropertyChanged(null); // Alles
+            }
+        }
+
         internal TessLoginControl() {
             InitializeComponent();
+
+            TessLoginUiController cUiCtl    = new TessLoginUiController();
+            this.DataContext                = cUiCtl;
         }
 
         private async void btn_login_Click(object sender, RoutedEventArgs e) {

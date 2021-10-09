@@ -3,11 +3,11 @@
 
     <Style TargetType="TextBox" x:Key="tbxTessBase">
         <Setter Property="Foreground" Value="White"></Setter>
-        <Setter Property="CaretBrush" Value="#ffffdc21"></Setter>
+        <Setter Property="CaretBrush" Value="{StaticResource TbxColor}"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                    <Border CornerRadius="2" Padding="2" Background="#222" BorderBrush="#ffffdc21" BorderThickness="1">
+                    <Border CornerRadius="2" Padding="2" Background="#222" BorderBrush="{StaticResource TbxColor}" BorderThickness="1">
                         <Viewbox HorizontalAlignment="Left">
                             <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
                         </Viewbox>
@@ -19,11 +19,11 @@
 
     <Style TargetType="PasswordBox" x:Key="pwdTessBase">
         <Setter Property="Foreground" Value="White"></Setter>
-        <Setter Property="CaretBrush" Value="#ffffdc21"></Setter>
+        <Setter Property="CaretBrush" Value="{StaticResource TbxColor}"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type PasswordBox}">
-                    <Border CornerRadius="2" Padding="2" Background="#222" BorderBrush="#ffffdc21" BorderThickness="1">
+                    <Border CornerRadius="2" Padding="2" Background="#222" BorderBrush="{StaticResource TbxColor}" BorderThickness="1">
                         <Viewbox HorizontalAlignment="Left">
                             <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
                         </Viewbox>
@@ -35,11 +35,11 @@
 
     <Style TargetType="TextBox" x:Key="tbxTess">
         <Setter Property="Foreground" Value="White"></Setter>
-        <Setter Property="CaretBrush" Value="#ffffdc21"></Setter>
+        <Setter Property="CaretBrush" Value="{StaticResource TbxColor}"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBoxBase}">
-                    <Border CornerRadius="2" Padding="2" Background="#141414" BorderBrush="#ffffdc21" BorderThickness="1">
+                    <Border CornerRadius="2" Padding="2" Background="#141414" BorderBrush="{StaticResource TbxColor}" BorderThickness="1">
                         <Viewbox>
                             <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
                         </Viewbox>
