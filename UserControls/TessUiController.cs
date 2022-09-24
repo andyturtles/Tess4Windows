@@ -27,7 +27,7 @@ namespace Tess4Windows.UserControls {
         private MyTess myTess { get { return TessControlManager.Instance.TessApi; } }
         private Tess4WinSettings settings { get { return TessControlManager.Instance.Settings; } }
 
-        public ImageSource img { get { return App.myApp.tessBackground; } }
+        public ImageSource img { get { return TessControlManager.Instance.TessBackground; } }
 
         public TessUiController() {
             if ( myTess.IsLoggedIn ) RefreshData(true);

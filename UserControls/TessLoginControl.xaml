@@ -6,7 +6,6 @@
              mc:Ignorable="d"
              d:DesignHeight="800" d:DesignWidth="1200">
     <UserControl.Background>
-        <!--<ImageBrush ImageSource="/Images/tess_win_bg.jpg" Stretch="UniformToFill"></ImageBrush>-->
         <ImageBrush ImageSource="{Binding img}" Stretch="UniformToFill"></ImageBrush>
     </UserControl.Background>
 
@@ -17,28 +16,30 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
-            <RowDefinition Height="3*" />
             <RowDefinition Height="22*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="32*" />
             <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="32*" />
             <ColumnDefinition Width="14*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-        <Label Name="lbl_user" Grid.Column="1" Grid.Row="1" Foreground="#EEE" Content="User" Style="{DynamicResource lblTess1}"></Label>
-        <Label Name="lbl_pw" Grid.Column="1" Grid.Row="2" Foreground="#EEE" Content="Pass" Style="{DynamicResource lblTess1}"></Label>
+        <Label Name="lbl_urlOut" Grid.Column="0" Grid.Row="1" Foreground="#EEE" Content="URL to Use" Style="{DynamicResource lblTess1}"></Label>
+        <Label Name="lbl_url2In" Grid.Column="0" Grid.Row="3" Foreground="#EEE" Content="Result URL" Style="{DynamicResource lblTess1}"></Label>
 
-        <TextBox Name="tbx_user" Grid.Column="2" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
-        <PasswordBox Name="tbx_pass" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Style="{DynamicResource pwdTessBase}" Margin="10"></PasswordBox>
+        <TextBox Name="tbx_urlOut" Grid.Column="1" Grid.Row="1" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
+        <TextBox Name="tbx_urlIn" Grid.Column="1" Grid.Row="3" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
 
-        <Button Name="btn_login" Grid.Column="2" Grid.Row="3" Content="Login" Click="btn_login_Click" Style="{DynamicResource btnTessCharge}"></Button>
-        <Button Name="btn_cancel" Grid.Column="1" Grid.Row="3" Content="Cancel" Click="btn_cancel_Click" Style="{DynamicResource btnTessCharge}"></Button>
+        <Button Name="btn_openBrowser" Grid.Column="1" Grid.Row="2" IsEnabled="False" Content="Open in Browser" Click="btn_openBrowser_Click" Style="{DynamicResource btnTessCharge}"></Button>
 
-        <!-- MFA -->
-        <Label Name="lbl_mfa" Grid.Column="1" Grid.Row="4" Foreground="#EEE" Content="MFA" HorizontalAlignment="Right" Style="{DynamicResource lblTess1}" Visibility="Hidden"></Label>
-        <TextBox Name="tbx_mfaCode" Grid.Column="2" Grid.Row="4" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10" Visibility="Hidden"></TextBox>
-        <Button Name="btn_mfaLogin" Grid.Column="2" Grid.Row="5" Content="MFA Login" Click="btn_mfaLogin_Click" Style="{DynamicResource btnTessCharge}" Visibility="Hidden"></Button>
+        <Button Name="btn_getLoginUrl" Grid.Column="2" Grid.Row="1" Content="Get Login URL" Click="btn_getLoginUrl_Click" Style="{DynamicResource btnTessCharge}"></Button>
+        <Button Name="btn_processReturnUrl" Grid.Column="2" Grid.Row="3" Content="Proceed" Click="btn_processReturnUrl_Click" Style="{DynamicResource btnTessCharge}"></Button>
+
+
+        <Button Name="btn_cancel" Grid.Column="2" Grid.Row="4" Content="Cancel" Click="btn_cancel_Click" Style="{DynamicResource btnTessCharge}"></Button>
+
+        <TextBox x:Name="tbx_info" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" TextWrapping="Wrap" AcceptsReturn="True"  TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10" />
+
     </Grid>
 </UserControl>

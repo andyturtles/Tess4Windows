@@ -14,7 +14,7 @@ namespace Tess4Windows.UserControls {
     public partial class TessPasswordControl : UserControl {
 
         private class TessPasswordUiController : UIController {
-            public ImageSource img { get { return App.myApp.tessBackground; } }
+            public ImageSource img { get { return TessControlManager.Instance.TessBackground; } }
 
             public override void NotifyPropertyChanged() {
                 NotifyPropertyChanged(null); // Alles
@@ -43,7 +43,7 @@ namespace Tess4Windows.UserControls {
         }
 
         private void btn_quit_Click(object sender, RoutedEventArgs e) {
-            App.myApp.ExitWithThread();
+            TessControlManager.Instance.ExitWithThread();
         }
     }
 }

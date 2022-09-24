@@ -15,6 +15,8 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="3*" />
             <RowDefinition Height="10*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -26,11 +28,11 @@
         </Grid.ColumnDefinitions>
 
         <Label Name="lbl_access_token" Grid.Column="0" Grid.Row="1" Foreground="#EEE" Content="Access Token"  Style="{DynamicResource lblTess1}"></Label>
-        <TextBox Name="tbx_access_token" Grid.Column="1" Grid.Row="1" IsReadOnly="True" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
+        <TextBox Name="tbx_access_token" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" IsReadOnly="False" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
 
-        <Label Name="lbl_refresh_token" Grid.Column="0" Grid.Row="2" Foreground="#EEE" Content="Refresh Token" Style="{DynamicResource lblTess1}"></Label>
-        <TextBox Name="tbx_refresh_token" Grid.Column="1" Grid.Row="2" IsReadOnly="True" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
+        <Label Name="lbl_refresh_token" Grid.Column="0" Grid.Row="3" Foreground="#EEE" Content="Refresh Token" Style="{DynamicResource lblTess1}"></Label>
+        <TextBox Name="tbx_refresh_token" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="5" IsReadOnly="False" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
 
-        <Button Name="btn_ok" Grid.Column="3" Grid.Row="3" Content="OK" Click="btn_ok_Click" Style="{DynamicResource btnTessCharge}"></Button>
+        <Button Name="btn_ok" Grid.Column="3" Grid.Row="5" Content="OK" Click="btn_ok_Click" Style="{DynamicResource btnTessCharge}"></Button>
     </Grid>
 </UserControl>

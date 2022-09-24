@@ -1,10 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Markup;
-using System.Windows.Media;
 using aBasics;
 using aBasics.WpfBindingErrors;
 
@@ -14,10 +11,6 @@ namespace Tess4Windows {
     /// Interaktionslogik für "App.xaml"
     /// </summary>
     public partial class App : Application {
-
-        internal static App myApp { get { return Application.Current as App; } }
-
-        internal ImageSource tessBackground;
 
         public App() {
             string logsFolder   = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
@@ -34,13 +27,6 @@ namespace Tess4Windows {
 
             this.DispatcherUnhandledException += HandleUnhandledExceptions;
             BindingExceptionThrower.Attach();
-
-            try {
-                tessBackground = aBasics.WpfBasics.Images.ImageSourceFromFile("Images\\tess_win_bg.jpg");
-            }
-            catch ( Exception ex ) {
-                Log.Error("Load tessBackground", ex);
-            }
 
             TessControlManager tcm      = new TessControlManager();
             TessControlManager.Instance = tcm;
@@ -62,26 +48,8 @@ namespace Tess4Windows {
             bool pwMode = false;
             if ( ( e.Args.Length > 0 ) && ( e.Args[0] == "/paranoid" ) ) pwMode = true;
 
-            MainWindow wnd = new MainWindow(pwMode);
+            MainWindow wnd = new MainWindow(pwMode, this.ShowError, this.Resources);
             wnd.Show();
-        }
-
-        public void LoadStyleDictionaryFromFile() {
-            string styleFile = "Style\\TessColors.xaml";
-                try {
-                    using ( var fs = new FileStream(styleFile, FileMode.Open, FileAccess.Read, FileShare.Read) ) {
-                        var dic = (ResourceDictionary)XamlReader.Load(fs);
-
-                        ResourceDictionary rd = Resources.MergedDictionaries.Where(x => x.Source.OriginalString == "style\\TessColors.xaml").SingleOrDefault();
-                        if ( rd == null ) return;
-
-                        Resources.MergedDictionaries.Remove(rd);
-                        Resources.MergedDictionaries.Add(dic);
-                    }
-                }
-                catch ( Exception ex ) {
-                    Log.Warning("LoadStyleDictionaryFromFile", ex);
-                }
         }
 
         #region UnhandledExceptions...
@@ -96,7 +64,7 @@ namespace Tess4Windows {
             string eMsg = "";
             if ( e != null ) eMsg = e.Exception.Message;
 
-            if ( ShowErrorMsg("Error: " + eMsg + e?.Exception?.ToString()) ) ExitWithThread();
+            if ( ShowErrorMsg("Error: " + eMsg + e?.Exception?.ToString()) ) TessControlManager.Instance.ExitWithThread();
         }
 
         private static bool errorOpen = false;
@@ -119,13 +87,6 @@ namespace Tess4Windows {
             MessageBox.Show(msg, "Error!");
             errorOpen = false;
             return true;
-        }
-
-        internal void ExitWithThread() {
-            // The App does not terminate without running the exit in a separate thread.
-            // A suggestion for the reason: The problem does only occur, if the UI thread runs exit. Shutdown the UI seems to be part of the exit routine.
-            // So the UI thread could block itself by requesting itself to exit.
-            new System.Threading.Thread(() => { Environment.Exit(-1); }).Start();
         }
 
         #endregion UnhandledExceptions...
