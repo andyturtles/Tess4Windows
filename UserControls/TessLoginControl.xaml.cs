@@ -59,6 +59,10 @@ Step 5: Click the 'Proceed Button'
             System.Diagnostics.Process.Start(tbx_urlOut.Text);
         }
 
+        private void Btn_manToken_OnClick(object sender, RoutedEventArgs e) {
+            TessControlManager.Instance.ShowToken();
+        }
+
     }
 
 }

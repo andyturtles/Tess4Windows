@@ -90,6 +90,11 @@ namespace Tess4Windows {
             ShowControl(tsc);
         }
 
+        public void ShowToken() {
+            TessShowTokenControl tsc = new TessShowTokenControl();
+            ShowControl(tsc);
+        }
+
         public void ShowControl(UserControl ctl) {
             UserControl.Content = ctl;
         }

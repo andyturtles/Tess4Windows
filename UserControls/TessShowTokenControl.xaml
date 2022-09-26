@@ -18,6 +18,7 @@
             <RowDefinition Height="3*" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="10*" />
+            <RowDefinition Height="3*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*" />
@@ -34,5 +35,9 @@
         <TextBox Name="tbx_refresh_token" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="5" IsReadOnly="False" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
 
         <Button Name="btn_ok" Grid.Column="3" Grid.Row="5" Content="OK" Click="btn_ok_Click" Style="{DynamicResource btnTessCharge}"></Button>
+
+        <Label Name="lbl_loginJson" Grid.Column="0" Grid.Row="6" Foreground="#EEE" Content="Login Result (JSON)" VerticalAlignment="Top" Style="{DynamicResource lblTess1}"></Label>
+        <TextBox x:Name="tbx_loginJson" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="4" TextWrapping="Wrap" AcceptsReturn="True"  TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10" />
+        <Button Name="btn_saveJson" Grid.Column="3" Grid.Row="7" Content="Save" Click="Btn_saveJson_OnClick" Style="{DynamicResource btnTessCharge}"></Button>
     </Grid>
 </UserControl>
