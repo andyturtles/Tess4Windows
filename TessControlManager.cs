@@ -1,11 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 using aBasics;
+using aBasics.WpfBasics;
 using Tess4Windows.UserControls;
 using TessApi;
 
@@ -17,28 +20,33 @@ namespace Tess4Windows {
     /// </summary>
     public class TessControlManager {
 
-        public static TessControlManager Instance { get; set; }
-
         public delegate void ShowErrorMessage(string msg);
 
-        public MyTess               TessApi { get; private set; }
-        public UserControl          UserControl;
-        public Tess4WinSettings     Settings;
-        public ShowErrorMessage     ShowError { get; private set; }
-        public ImageSource          TessBackground { get; private set; }
+        public static TessControlManager Instance { get; set; }
+
+        public MyTess           TessApi        { get; }
+        public ShowErrorMessage ShowError      { get; private set; }
+        public ImageSource      TessBackground { get; private set; }
+
+        #region Fields
+
+        public UserControl      UserControl;
+        public Tess4WinSettings Settings;
+
+        #endregion
 
         public TessControlManager() {
-            TessApi         = new MyTess();
-            Settings        = Tess4WinSettings.LoadSettings();
+            TessApi  = new MyTess();
+            Settings = Tess4WinSettings.LoadSettings();
         }
 
         public void Init(UserControl ctlForDisplay, ShowErrorMessage showErrorMsg, ResourceDictionary resources) {
-            UserControl     = ctlForDisplay;
-            ShowError       = showErrorMsg;
+            UserControl = ctlForDisplay;
+            ShowError   = showErrorMsg;
 
             try {
                 LoadStyleDictionaryFromFile(resources);
-                TessBackground = aBasics.WpfBasics.Images.ImageSourceFromFile("Images\\tess_win_bg.jpg");
+                TessBackground = Images.ImageSourceFromFile("Images\\tess_win_bg.jpg");
             }
             catch ( Exception ex ) {
                 Log.Error("TessControlManager.Init - Load tessBackground", ex);
@@ -47,40 +55,48 @@ namespace Tess4Windows {
 
         private void LoadStyleDictionaryFromFile(ResourceDictionary resources) {
             string styleFile = "Style\\TessColors.xaml";
-                try {
-                    using ( var fs = new FileStream(styleFile, FileMode.Open, FileAccess.Read, FileShare.Read) ) {
-                        var dic = (ResourceDictionary)XamlReader.Load(fs);
+            try {
+                using ( FileStream fs = new FileStream(styleFile, FileMode.Open, FileAccess.Read, FileShare.Read) ) {
+                    ResourceDictionary dic = (ResourceDictionary) XamlReader.Load(fs);
 
-                        ResourceDictionary rd = resources.MergedDictionaries.Where(x => x.Source.OriginalString == "style\\TessColors.xaml").SingleOrDefault();
-                        if ( rd == null ) return;
+                    ResourceDictionary rd = resources.MergedDictionaries.Where(x => x.Source.OriginalString == "style\\TessColors.xaml").SingleOrDefault();
+                    if ( rd == null ) return;
 
-                        resources.MergedDictionaries.Remove(rd);
-                        resources.MergedDictionaries.Add(dic);
-                    }
+                    resources.MergedDictionaries.Remove(rd);
+                    resources.MergedDictionaries.Add(dic);
                 }
-                catch ( Exception ex ) {
-                    Log.Warning("TessControlManager.LoadStyleDictionaryFromFile", ex);
-                }
+            }
+            catch ( Exception ex ) {
+                Log.Warning("TessControlManager.LoadStyleDictionaryFromFile", ex);
+            }
         }
 
         /// <summary>
         /// Zeigt das jeweils 'passende' Control an
         /// </summary>
-        /// <param name="tess">The MyTess.</param>
-        /// <param name="toSet">To UserControl.</param>
-        /// <param name="set">The set.</param>
         public void ShowSuitableControl() {
-            if ( !TessApi.IsLoggedIn )          ShowLogin();
+            if ( !TessApi.IsLoggedIn ) ShowLogin();
             else if ( Settings?.CarId == null ) ShowSettings();
             else {
+                Task.Run(async () => {
+                             await RefreshToken();
+                         }).Wait();
+
                 TessApi.SetCarId(Settings.CarId.Value);
                 TessControl tc = new TessControl();
                 ShowControl(tc);
             }
         }
 
+        public async Task RefreshToken() {
+            await TessApi.RefreshToken();
+
+            // TODO: if further use
+            //TessApiLoginResult res = await TessApi.RefreshToken();
+            //if(!res.Success)
+        }
+
         public void ShowLogin() {
-#warning TODO: bestehendes Login löschen !?
             TessLoginControl tlc = new TessLoginControl();
             ShowControl(tlc);
         }
@@ -103,7 +119,9 @@ namespace Tess4Windows {
             // The App does not terminate without running the exit in a separate thread.
             // A suggestion for the reason: The problem does only occur, if the UI thread runs exit. Shutdown the UI seems to be part of the exit routine.
             // So the UI thread could block itself by requesting itself to exit.
-            new System.Threading.Thread(() => { Environment.Exit(-1); }).Start();
+            new Thread(() => { Environment.Exit(-1); }).Start();
         }
+
     }
+
 }

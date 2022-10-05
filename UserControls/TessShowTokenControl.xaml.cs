@@ -33,6 +33,15 @@ namespace Tess4Windows.UserControls {
             TessControlManager.Instance.ShowSettings();
         }
 
+        private async void Btn_doTokenRefresh_OnClick(object sender, RoutedEventArgs e) {
+            
+            TessApiLoginResult res = await TessControlManager.Instance.TessApi.RefreshToken();
+            //if ( res.Success ) {
+            //}
+            //else TessControlManager.Instance.ShowError("Login failed: " + res.Message);
+
+        }
+
     }
 
 }

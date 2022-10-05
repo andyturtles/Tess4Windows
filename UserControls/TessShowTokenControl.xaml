@@ -34,6 +34,8 @@
         <Label Name="lbl_refresh_token" Grid.Column="0" Grid.Row="3" Foreground="#EEE" Content="Refresh Token" Style="{DynamicResource lblTess1}"></Label>
         <TextBox Name="tbx_refresh_token" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="5" IsReadOnly="False" TextAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource tbxTessBase}" Margin="10"></TextBox>
 
+        <Button Name="btn_doTokenRefresh" Grid.Column="1" Grid.Row="5" Visibility="Hidden" Content="Do Token" Click="Btn_doTokenRefresh_OnClick" Style="{DynamicResource btnTessCharge}"></Button>
+
         <Button Name="btn_ok" Grid.Column="3" Grid.Row="5" Content="OK" Click="btn_ok_Click" Style="{DynamicResource btnTessCharge}"></Button>
 
         <Label Name="lbl_loginJson" Grid.Column="0" Grid.Row="6" Foreground="#EEE" Content="Login Result (JSON)" VerticalAlignment="Top" Style="{DynamicResource lblTess1}"></Label>
